@@ -7,6 +7,7 @@ import (
 
 	"github.com/derpl-del/go-cloth/code/dbcode"
 	"github.com/derpl-del/go-cloth/code/jscode"
+	"github.com/derpl-del/go-cloth/code/sscode"
 	"github.com/derpl-del/go-cloth/code/strcode"
 	"github.com/derpl-del/go-cloth/code/utilcode"
 )
@@ -17,6 +18,7 @@ func SignInHandler(w http.ResponseWriter, r *http.Request) {
 	ReqBody, _ := ioutil.ReadAll(r.Body)
 	ReqStr := jscode.UsernameInfo(ReqBody)
 	UserVal := dbcode.SelectUserData("username", "username", ReqStr.Username)
+	Role := dbcode.SelectUserData("role", "username", ReqStr.Username)
 	if UserVal == false {
 		ResStr = strcode.ResponseForm{ErrorCode: "0001", ErrorMessage: "Invalid Username"}
 	} else {
@@ -25,6 +27,7 @@ func SignInHandler(w http.ResponseWriter, r *http.Request) {
 			ResStr = strcode.ResponseForm{ErrorCode: "0002", ErrorMessage: "Invalid Password"}
 		} else {
 			ResStr = strcode.ResponseForm{ErrorCode: "0000", ErrorMessage: "Success"}
+			sscode.SetSession(ReqStr.Ticket, ReqStr.Username, Role, w, r)
 		}
 	}
 	json.NewEncoder(w).Encode(ResStr)

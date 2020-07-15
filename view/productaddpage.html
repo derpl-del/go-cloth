@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Go-Cloth</title>
+
+    <!-- Bootstrap -->
+    <link href="../env/bootstrap-4.5.0/dist/css/bootstrap.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="../env/css/product-main.css" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+        <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="/">Spirit Deer</a>
+        <ul class="navbar-nav px-3">
+            <li class="nav-item text-nowrap">
+                <a class="nav-link" id="login-logout" type="button"></a>
+            </li>
+        </ul>
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark sidebar collapse">
+                <div class="sidebar-sticky pt-3">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/shopkeeper/product_list">List Product</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="">Add Product</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4 d-md-block bg-light">
+                <div
+                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1>Add Product</h1>
+                </div>
+                <div class="pb-5 mb-3 border-bottom">
+                    <h2>Product Details</h2>
+                    <form id="form-id">
+                        <div class="form-group">
+                            <label for="name">Product name :</label>
+                            <input type="text" class="form-control" id="name" name="name">
+                            <p></p>
+                        </div>
+                        <div class="form-group">
+                            <label id="form-name" for="price">Price product :</label>
+                            <input type="text" class="form-control" id="price" name="price">
+                            <p></p>
+                        </div>
+                        <div class="form-group">
+                            <label for="amount">Amount product:</label>
+                            <input type="text" class="form-control" id="amount" name="amount">
+                            <p></p>
+                        </div>
+                        <div class="form-group">
+                            <label for="size">Size product:</label>
+                            <select class="form-control" id="size" name="size">
+                                <option>S</option>
+                                <option>M</option>
+                                <option>L</option>
+                            </select>
+                            <p></p>
+                        </div>
+                        <div class="form-group">
+                            <label for="gender">Gender Product :</label>
+                            <select class="form-control" id="gender" name="gender">
+                                <option>Pria</option>
+                                <option>Wanita</option>
+                            </select>
+                            <p></p>
+                        </div>
+                        <div class="form-group">
+                            <label for="category">Category Product :</label>
+                            <select class="form-control" id="category" name="category">
+                                <option>Outwear</option>
+                                <option>Casual</option>
+                            </select>
+                            <p></p>
+                        </div>
+                        <div class="form-group">
+                            <input type="file" class="form-control-file" id="file">
+                            <label for="file">Upload Photo</label>
+                            <p></p>
+                        </div>
+                    </form>
+                    <button type="submit" class="btn btn-primary" id="but_upload"
+                        style=" float:right; margin-top: 3px;">Submit</button>
+                </div>
+                <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#preview-modal"
+                    style=" float:right; margin-top: 3px;">modal</button>
+            </main>
+        </div>
+        <div id="preview-modal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
+            aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-dark" id="exampleModalLongTitle">Preview</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div id="info-product" class="col bg-dark text-white">
+                                <h2 id="product-name"></h2>
+                                <p style="width=100%;" id="product-code" class="border-bottom"></p>
+                                <p id="product-price" class="border-bottom"></p>
+                            </div>
+                            <div class="col-7">
+                                <div id="preview" class="text-center">
+                                    <img src="../data/tmp/202007151523-mDaWE/202007151523-58.png" class="img-fluid"
+                                        alt="Responsive image" id="img">
+                                </div>
+                            </div>
+                            <div id="info-product" class="col bg-dark text-white">
+                                <h4>gender</h4>
+                                <p id="product-gender" class="border-bottom"></p>
+                                <h4>size</h4>
+                                <p id="product-size" class="border-bottom"></p>
+                                <h4>category</h4>
+                                <p id="product-category" class="border-bottom"></p>
+                                <h4>amount</h4>
+                                <p id="product-amount" class="border-bottom"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button id="create-product" type="button" class="btn btn-primary">Create Product</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="container-md py-5">
+            <div class="row">
+                <div class="col-12 col-md">
+                </div>
+                <div class="col-6 col-md">
+                    <p class="float-right">
+                        <a href="#">Back to top</a>
+                    </p>
+                </div>
+            </div>
+        </footer>
+        <script src="../env/lib/jquery-3.5.1.js"></script>
+        <script src="../env/bootstrap-4.5.0/dist/js/bootstrap.js"></script>
+        <script src="../env/js/shopkeeper.js"></script>
+        <script src="../env/js/upload.js"></script>
+        <script>window.jQuery || document.write('<script src="../env/bootstrap-4.5.0/js/vendor/jquery.slim.min.js"><\/script>')</script>
+        <script src="../env/bootstrap-4.5.0/dist/js/bootstrap.bundle.js"></script>
+</body>
+
+</html>

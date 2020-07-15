@@ -12,3 +12,10 @@ func UsernameInfo(input []byte) strcode.UsernameInfo {
 	json.Unmarshal(input, &response)
 	return response
 }
+
+//ProductRequest JSON
+func ProductRequest(input []byte) strcode.RequestProduct {
+	var response strcode.RequestProduct
+	json.Unmarshal(input, &response)
+	return response
+}
