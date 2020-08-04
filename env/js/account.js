@@ -14,7 +14,8 @@ $(document).ready(function () {
         if (role == true) {
             $("#role-btn").text("Shopkeeper");
         } else {
-            $("#role-btn").text("Product");
+            var url = "/";
+            window.location.replace(url);
         }
     });
 

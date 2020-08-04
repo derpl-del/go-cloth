@@ -5,6 +5,8 @@ import (
 	"fmt"
 
 	//for framework
+	"github.com/derpl-del/go-cloth/code/strcode"
+	//for framework
 	_ "github.com/godror/godror"
 )
 
@@ -22,7 +24,8 @@ func OpenConnection() *sql.DB {
 func InsertUserData(UserName string, UserPassword string) {
 	db := OpenConnection()
 	defer db.Close()
-	statementSQL := fmt.Sprintf("INSERT INTO USER_INFO (USERNAME,USERPASSWORD,CREATED_DATE) VALUES ('%s', '%s',sysdate)", UserName, UserPassword)
+	statementSQL := fmt.Sprintf("INSERT INTO USER_INFO (USERNAME,USERPASSWORD,CREATED_DATE,ROLE) VALUES ('%s', '%s',sysdate,'customer')", UserName, UserPassword)
+	//fmt.Println(statementSQL)
 	rows, err := db.Query(statementSQL)
 	if err != nil {
 		fmt.Println("Error running query")
@@ -71,4 +74,18 @@ func SelectUserValueData(Coloumn string, Validation1 string, Data1 string, Valid
 		return true
 	}
 	return false
+}
+
+//InserProductData func
+func InserProductData(Input strcode.RequestProduct) {
+	db := OpenConnection()
+	defer db.Close()
+	statementSQL := fmt.Sprintf("INSERT INTO PRODUCT_INFO (PRODUCT_ID, PRODUCT_NAME, PRODUCT_CATEGORY, PRODUCT_SIZE, PRODUCT_GENDER, AMOUNT, CREATED_DATE, STATUS) VALUES ('%v', '%v', '%v', '%v', '%v', '%v', SYSDATE, '%v')", Input.Productcode, Input.Productname, Input.Productcategory, Input.Productsize, Input.Productgender, Input.Productamount, "ACTIVE")
+	fmt.Println(statementSQL)
+	rows, err := db.Query(statementSQL)
+	if err != nil {
+		fmt.Println("Error running query")
+		fmt.Println(err)
+	}
+	defer rows.Close()
 }

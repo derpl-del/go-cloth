@@ -31,6 +31,7 @@ type ResponseUpload struct {
 
 //RequestProduct struct
 type RequestProduct struct {
+	Productnum      int    `json:"productnum"`
 	Productname     string `json:"productname"`
 	Producttoken    string `json:"Producttoken"`
 	Productcode     string `json:"productcode"`
@@ -40,4 +41,22 @@ type RequestProduct struct {
 	Productcategory string `json:"productcategory"`
 	Productamount   string `json:"productamount"`
 	Imagelocation   string `json:"imgsource"`
+	Productcreated  string `json:"productcreated"`
+	Productupdated  string `json:"Productupdated"`
+}
+
+//AllResponseProduct struct
+type AllResponseProduct struct {
+	ListProduct []ResponseProductList
+	Page        int
+	Totalpage   int
+}
+
+//ResponseProductList struct
+type ResponseProductList struct {
+	Productnum    int    `json:"productnum"`
+	Productname   string `json:"productname"`
+	Productcode   string `json:"productcode"`
+	Productupdate string `json:"productupdate"`
+	Imagelocation string `json:"imgsource"`
 }

@@ -52,6 +52,9 @@
                 <div class="sidebar-sticky pt-3">
                     <ul class="nav flex-column">
                         <li class="nav-item">
+                            <a class="nav-link" href="/shopkeeper">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="/shopkeeper/product_list">List Product</a>
                         </li>
                         <li class="nav-item">
@@ -117,8 +120,6 @@
                     <button type="submit" class="btn btn-primary" id="but_upload"
                         style=" float:right; margin-top: 3px;">Submit</button>
                 </div>
-                <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#preview-modal"
-                    style=" float:right; margin-top: 3px;">modal</button>
             </main>
         </div>
         <div id="preview-modal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
@@ -135,16 +136,9 @@
                         <div class="row">
                             <div id="info-product" class="col bg-dark text-white">
                                 <h2 id="product-name"></h2>
-                                <p style="width=100%;" id="product-code" class="border-bottom"></p>
+                                <p id="product-code"></p>
+                                <h4>price</h4>
                                 <p id="product-price" class="border-bottom"></p>
-                            </div>
-                            <div class="col-7">
-                                <div id="preview" class="text-center">
-                                    <img src="../data/tmp/202007151523-mDaWE/202007151523-58.png" class="img-fluid"
-                                        alt="Responsive image" id="img">
-                                </div>
-                            </div>
-                            <div id="info-product" class="col bg-dark text-white">
                                 <h4>gender</h4>
                                 <p id="product-gender" class="border-bottom"></p>
                                 <h4>size</h4>
@@ -153,6 +147,11 @@
                                 <p id="product-category" class="border-bottom"></p>
                                 <h4>amount</h4>
                                 <p id="product-amount" class="border-bottom"></p>
+                            </div>
+                            <div class="col-7">
+                                <div id="preview" class="text-center">
+                                    <img src="" class="img-fluid" alt="Responsive image" id="img">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -176,7 +175,7 @@
         </footer>
         <script src="../env/lib/jquery-3.5.1.js"></script>
         <script src="../env/bootstrap-4.5.0/dist/js/bootstrap.js"></script>
-        <script src="../env/js/shopkeeper.js"></script>
+        <script src="../env/js/account.js"></script>
         <script src="../env/js/upload.js"></script>
         <script>window.jQuery || document.write('<script src="../env/bootstrap-4.5.0/js/vendor/jquery.slim.min.js"><\/script>')</script>
         <script src="../env/bootstrap-4.5.0/dist/js/bootstrap.bundle.js"></script>

@@ -7,6 +7,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"os"
+	"strings"
 	"time"
 
 	"github.com/derpl-del/go-cloth/code/jscode"
@@ -17,10 +18,15 @@ import (
 
 //AddProductPage func
 func AddProductPage(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("AddProductPage")
+	currentTime := time.Now()
+	layoutFormat := "2006-01-02 15:04:05"
+	date := currentTime.Format(layoutFormat)
+	fmt.Println(date)
 	var ResStr strcode.ResponseForm
 	ReqBody, _ := ioutil.ReadAll(r.Body)
 	ReqStr := jscode.ProductRequest(ReqBody)
+	ReqStr.Productupdated = date
+	ReqStr.Productcreated = date
 	err := wdata.CreateProductData(ReqStr)
 	if err != nil {
 		ResStr = strcode.ResponseForm{ErrorCode: "9999", ErrorMessage: "Failed"}
@@ -62,10 +68,11 @@ func PreviewImage(w http.ResponseWriter, r *http.Request) {
 
 //GenerateProductID func
 func GenerateProductID(w http.ResponseWriter, r *http.Request) {
-	token1 := utilcode.GenerateString(5)
+	token1 := utilcode.GenerateString(1)
 	currentTime := time.Now()
 	productid := currentTime.Format("200601021504")
-	token := productid + "-" + token1
+	tiket := strings.ToUpper(token1)
+	token := tiket + "-" + productid
 	ResStr := strcode.ResponseUpload{ErrorCode: "0000", ErrorMessage: "success", Location: token}
 	json.NewEncoder(w).Encode(ResStr)
 }

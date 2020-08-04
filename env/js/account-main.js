@@ -14,7 +14,7 @@ $(document).ready(function () {
         if (role == true) {
             $("#role-btn").text("Shopkeeper");
         } else {
-            window.location.replace("/");
+            $("#role-btn").text("Product");
         }
     });
 
@@ -26,5 +26,14 @@ $(document).ready(function () {
         } else {
             window.location.replace("/login");
         }
+    });
+
+    $("#role-btn").click(function () {
+        if (role == true) {
+            var url = "/shopkeeper";
+            window.location.replace(url);
+        }
+        else { }
+
     });
 });

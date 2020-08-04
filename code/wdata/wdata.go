@@ -33,7 +33,7 @@ func CreateProductData(input strcode.RequestProduct) error {
 	if err2 != nil {
 		return nil
 	}
-	JSTittle := pathjs + "/product_" + productcode + ".json"
+	JSTittle := pathjs + "/" + productcode + ".json"
 	out, _ := json.Marshal(input)
 	err := ioutil.WriteFile(JSTittle, out, 0777)
 	if err != nil {
@@ -43,6 +43,18 @@ func CreateProductData(input strcode.RequestProduct) error {
 	err3 := os.Remove(removeloc)
 	if err3 != nil {
 		return err3
+	}
+	return nil
+}
+
+//EditProductData func
+func EditProductData(input strcode.RequestProduct) error {
+	path := "product_list/" + input.Productcode + "/js/" + input.Productcode + ".json"
+	JSTittle := path
+	out, _ := json.Marshal(input)
+	err := ioutil.WriteFile(JSTittle, out, 0777)
+	if err != nil {
+		return err
 	}
 	return nil
 }

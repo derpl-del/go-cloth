@@ -203,3 +203,16 @@ header .overlay {
   width: 100%;
     font-size: 12px;
 }
+
+#info-product button{
+  float:right;
+}
+
+.card-body a{
+  float:right;
+}
+
+#preview{
+  max-width: 560px;
+  max-height: 560px;
+}
