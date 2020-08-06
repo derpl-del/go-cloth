@@ -58,3 +58,15 @@ func EditProductData(input strcode.RequestProduct) error {
 	}
 	return nil
 }
+
+//CreateHL func
+func CreateHL(input strcode.RequestHighLight) error {
+	path := "img/HL/HL_List.json"
+	JSTittle := path
+	out, _ := json.Marshal(input)
+	err := ioutil.WriteFile(JSTittle, out, 0777)
+	if err != nil {
+		return err
+	}
+	return nil
+}

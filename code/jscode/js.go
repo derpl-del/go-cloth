@@ -19,3 +19,10 @@ func ProductRequest(input []byte) strcode.RequestProduct {
 	json.Unmarshal(input, &response)
 	return response
 }
+
+//HighLighRequest JSON
+func HighLighRequest(input []byte) strcode.RequestHighLight {
+	var response strcode.RequestHighLight
+	json.Unmarshal(input, &response)
+	return response
+}

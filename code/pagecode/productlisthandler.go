@@ -46,3 +46,25 @@ func ReturnAllProduct(w http.ResponseWriter, r *http.Request) {
 	Articles := strcode.AllResponseProduct{ListProduct: ListProduct, Page: pageint, Totalpage: int(totalpage)}
 	json.NewEncoder(w).Encode(Articles)
 }
+
+//ReturnAllsProduct for homepage
+func ReturnAllsProduct(w http.ResponseWriter, r *http.Request) {
+	var ListProduct []strcode.ResponseProductList
+	var data strcode.ResponseProductList
+	fileInfo, err := ioutil.ReadDir("product_list/")
+	if err != nil {
+		fmt.Println(err)
+	}
+	for i, info := range fileInfo {
+		var article = rdata.GetProductData(info.Name())
+		data.Productnum = i + 1
+		data.Productcode = article.Producttoken
+		data.Productname = article.Productname
+		data.Imagelocation = article.Imagelocation
+		data.Productupdate = article.Productupdated
+		ListProduct = append(ListProduct, data)
+	}
+	sort.Sort(utilcode.ByDate(ListProduct))
+	Articles := strcode.AllResponseProduct{ListProduct: ListProduct}
+	json.NewEncoder(w).Encode(Articles)
+}

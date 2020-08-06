@@ -60,3 +60,14 @@ type ResponseProductList struct {
 	Productupdate string `json:"productupdate"`
 	Imagelocation string `json:"imgsource"`
 }
+
+//RequestHighLight struct
+type RequestHighLight struct {
+	ListProduct []ProductHL `json:"ListProduct"`
+}
+
+//ProductHL struct
+type ProductHL struct {
+	Productcode string `json:"productcode"`
+	Imgloc      string `json:"imgloc"`
+}

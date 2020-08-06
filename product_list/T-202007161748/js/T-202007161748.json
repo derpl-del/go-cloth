@@ -1,14 +1,1 @@
-{
-    "productnum": 0,
-    "productname": "3",
-    "Producttoken": "T-202007161748",
-    "productcode": "T-202007161748",
-    "productprice": "IDR 132",
-    "productgender": "Pria",
-    "productsize": "M",
-    "productcategory": "Outwear",
-    "productamount": "50",
-    "imgsource": "product_list/T-202007161748/img/T-202007161748.png",
-    "productcreated": "2020-07-16 17:48:26",
-    "Productupdated": "2020-07-16 17:48:26"
-}
+{"productnum":0,"productname":"hoodie","Producttoken":"T-202007161748","productcode":"T-202007161748","productprice":"IDR 132","productgender":"Pria","productsize":"M","productcategory":"Outwear","productamount":"50","imgsource":"product_list/T-202007161748/img/T-202007161748.png","productcreated":"2020-07-16 17:48:26","Productupdated":"2020-08-04 15:38:10"}

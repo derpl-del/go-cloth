@@ -62,7 +62,6 @@ $(document).ready(function () {
             } else {
                 $("#delete-modal").modal('hide');
             }
-
         });
     });
 
